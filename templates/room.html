@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="message-box">
+    <h2>Chat Room:{{code}}</h2>
+    <div class="messages" id="messages"></div>
+    <div class="inputs">
+        <input type="text" placeholder="Message" name="message" id="message" rows="3" onkeydown="handleKeyPress(event)">
+
+        <button type="button" name="send" onClick="sendMessage()" >
+            Send
+        </button>
+    </div>
+
+</div>
+<script >
+    var socketIo=io();
+    var messages=document.getElementById("messages")
+    const createmessage=(name,msg)=>{
+
+        const content=`
+        <div class="text">
+            <span>
+                <strong>${name}</strong>:${msg}
+            </span>
+            <br>
+            <span class="muted">
+                ${Date().toLocaleString()}
+            </span>
+        </div>
+        `;
+        
+        messages.innerHTML+=content;
+    }
+    socketIo.on("message",(data)=>{
+        createmessage(data.name,data.message);
+    });
+    const sendMessage=()=>{
+        const message_element=document.getElementById("message");
+        if(message===""){
+            return;
+        }
+        socketIo.emit("message",{data:message_element.value});
+        message_element.value="";
+    };
+    function handleKeyPress(event) {
+        // Check if the key pressed is Enter (key code 13)
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    }
+
+
+</script>
+{% for msg in message %}
+
+<script>
+    
+    createmessage("{{msg.name}}","{{msg.message}}")
+</script>
+{%endfor%}
+
+{% endblock content %}
+    

@@ -1,0 +1,94 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.content{    
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+      
+}
+
+.buttons{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    
+
+}
+
+.join{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-radius: 9px;
+}
+.create-btn{
+    width: 100%;
+    border-radius: 9px;
+}
+.alert-error{
+    
+    align-items: center;
+    text-align: center;
+    position: fixed;  
+    top: 0;
+               
+      
+    margin: auto;    
+    background-color: lightcoral;
+    font-size: 28px;
+    font-family:'Courier New', Courier, monospace;
+    border-radius: 9px;
+    
+}
+
+.message-box{
+    border-color: black;
+    border-width: 10px;
+    border-radius: 10px;
+    border-style: solid;
+    background-color: whitesmoke;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    width:80vw;
+    align-items: stretch;
+}
+.messages{
+    overflow-y: scroll;
+    width: 100%;
+    flex: 1;
+
+}
+
+.inputs {
+    padding: 10px;
+    display: flex;
+    margin-top: auto; /* Add this line */
+}
+
+h2{
+    text-align: center;
+}
+#message{
+    flex:1;
+}
+.muted{
+    font-size: small;
+    color:gray;
+
+}
+.text{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
